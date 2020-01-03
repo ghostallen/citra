@@ -128,6 +128,8 @@ void Config::ReadValues() {
         sdl2_config->GetBoolean("Renderer", "use_disk_shader_cache", true);
     Settings::values.frame_limit =
         static_cast<u16>(sdl2_config->GetInteger("Renderer", "frame_limit", 100));
+    Settings::values.use_format_reinterpret_hack =
+        static_cast<u16>(sdl2_config->GetBoolean("Renderer", "use_format_reinterpret_hack", true));
     Settings::values.use_vsync_new =
         static_cast<u16>(sdl2_config->GetInteger("Renderer", "use_vsync_new", 1));
 
