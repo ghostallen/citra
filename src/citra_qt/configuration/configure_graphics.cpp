@@ -52,6 +52,7 @@ void ConfigureGraphics::SetConfiguration() {
     ui->toggle_format_reinterpret_hack->setChecked(Settings::values.use_format_reinterpret_hack);
     ui->enable_cache_clear->setChecked(Settings::values.enable_cache_clear);
     ui->clear_cache_secs->setValue(Settings::values.clear_cache_secs);
+    ui->min_vertices_per_thread->setValue(Settings::values.min_vertices_per_thread);
     ui->toggle_shader_jit->setChecked(Settings::values.use_shader_jit);
     ui->toggle_vsync_new->setChecked(Settings::values.use_vsync_new);
 }
@@ -63,6 +64,7 @@ void ConfigureGraphics::ApplyConfiguration() {
     Settings::values.use_format_reinterpret_hack = ui->toggle_format_reinterpret_hack->isChecked();
     Settings::values.enable_cache_clear = ui->enable_cache_clear->isChecked();
     Settings::values.clear_cache_secs = ui->clear_cache_secs->value();
+    Settings::values.min_vertices_per_thread = ui->min_vertices_per_thread->value();
     Settings::values.use_shader_jit = ui->toggle_shader_jit->isChecked();
     Settings::values.use_vsync_new = ui->toggle_vsync_new->isChecked();
 }

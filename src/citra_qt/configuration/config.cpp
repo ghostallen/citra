@@ -454,6 +454,7 @@ void Config::ReadRendererValues() {
     Settings::values.clear_cache_secs = ReadSetting(QStringLiteral("clear_cache_secs"), 60).toInt();
     Settings::values.sharper_distant_objects =
         ReadSetting(QStringLiteral("sharper_distant_objects"), false).toBool();
+    Settings::values.min_vertices_per_thread = ReadSetting(QStringLiteral("min_vertices_per_thread"), 10).toInt();
 
     Settings::values.bg_red = ReadSetting(QStringLiteral("bg_red"), 0.0).toFloat();
     Settings::values.bg_green = ReadSetting(QStringLiteral("bg_green"), 0.0).toFloat();
@@ -898,6 +899,7 @@ void Config::SaveRendererValues() {
     WriteSetting(QStringLiteral("enable_cache_clear"), Settings::values.enable_cache_clear, false);
     WriteSetting(QStringLiteral("clear_cache_secs"), Settings::values.clear_cache_secs, 60);
     WriteSetting(QStringLiteral("sharper_distant_objects"), Settings::values.sharper_distant_objects, false);
+    WriteSetting(QStringLiteral("min_vertices_per_thread"), Settings::values.min_vertices_per_thread);
 
     // Cast to double because Qt's written float values are not human-readable
     WriteSetting(QStringLiteral("bg_red"), (double)Settings::values.bg_red, 0.0);
