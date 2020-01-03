@@ -154,6 +154,8 @@ struct Values {
     bool use_frame_limit;
     u16 frame_limit;
     bool use_format_reinterpret_hack;
+    bool custom_refresh_rate;
+    int screen_refresh_rate;
 
     LayoutOption layout_option;
     bool swap_screen;
