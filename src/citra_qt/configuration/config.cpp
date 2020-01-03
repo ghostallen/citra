@@ -57,7 +57,7 @@ const std::array<std::array<int, 5>, Settings::NativeAnalog::NumAnalogs> Config:
 // This must be in alphabetical order according to action name as it must have the same order as
 // UISetting::values.shortcuts, which is alphabetically ordered.
 // clang-format off
-const std::array<UISettings::Shortcut, 20> default_hotkeys{
+const std::array<UISettings::Shortcut, 21> default_hotkeys{
     {{QStringLiteral("Advance Frame"),            QStringLiteral("Main Window"), {QStringLiteral("\\"), Qt::ApplicationShortcut}},
      {QStringLiteral("Capture Screenshot"),       QStringLiteral("Main Window"), {QStringLiteral("Ctrl+P"), Qt::ApplicationShortcut}},
      {QStringLiteral("Continue/Pause Emulation"), QStringLiteral("Main Window"), {QStringLiteral("F4"), Qt::WindowShortcut}},
@@ -70,6 +70,7 @@ const std::array<UISettings::Shortcut, 20> default_hotkeys{
      {QStringLiteral("Load File"),                QStringLiteral("Main Window"), {QStringLiteral("Ctrl+O"), Qt::WindowShortcut}},
      {QStringLiteral("Remove Amiibo"),            QStringLiteral("Main Window"), {QStringLiteral("F3"), Qt::ApplicationShortcut}},
      {QStringLiteral("Restart Emulation"),        QStringLiteral("Main Window"), {QStringLiteral("F6"), Qt::WindowShortcut}},
+     {QStringLiteral("Show Toolbar"),             QStringLiteral("Main Window"), {QStringLiteral("Ctrl+G"), Qt::WindowShortcut}},
      {QStringLiteral("Stop Emulation"),           QStringLiteral("Main Window"), {QStringLiteral("F5"), Qt::WindowShortcut}},
      {QStringLiteral("Swap Screens"),             QStringLiteral("Main Window"), {QStringLiteral("F9"), Qt::WindowShortcut}},
      {QStringLiteral("Toggle Filter Bar"),        QStringLiteral("Main Window"), {QStringLiteral("Ctrl+F"), Qt::WindowShortcut}},
@@ -517,6 +518,7 @@ void Config::ReadUIValues() {
     UISettings::values.first_start = ReadSetting(QStringLiteral("firstStart"), true).toBool();
     UISettings::values.callout_flags = ReadSetting(QStringLiteral("calloutFlags"), 0).toUInt();
     UISettings::values.show_console = ReadSetting(QStringLiteral("showConsole"), false).toBool();
+    UISettings::values.Show_Toolbar = ReadSetting(QStringLiteral("showToolbar"), true).toBool();
     UISettings::values.pause_when_in_background =
         ReadSetting(QStringLiteral("pauseWhenInBackground"), false).toBool();
 
@@ -944,6 +946,7 @@ void Config::SaveUIValues() {
     WriteSetting(QStringLiteral("firstStart"), UISettings::values.first_start, true);
     WriteSetting(QStringLiteral("calloutFlags"), UISettings::values.callout_flags, 0);
     WriteSetting(QStringLiteral("showConsole"), UISettings::values.show_console, false);
+    WriteSetting(QStringLiteral("showToolbar"), UISettings::values.Show_Toolbar, true);
     WriteSetting(QStringLiteral("pauseWhenInBackground"),
                  UISettings::values.pause_when_in_background, false);
 
