@@ -157,6 +157,8 @@ struct Values {
     bool use_format_reinterpret_hack;
     bool custom_refresh_rate;
     int screen_refresh_rate;
+    bool enable_cache_clear;
+    int clear_cache_secs;
 
     LayoutOption layout_option;
     bool swap_screen;

@@ -39,6 +39,8 @@ ConfigureGraphics::ConfigureGraphics(QWidget* parent)
         }
     });
 #endif
+    ui->clear_cache_secs->setEnabled(Settings::values.enable_cache_clear);
+    connect(ui->enable_cache_clear, &QCheckBox::toggled, ui->clear_cache_secs, &QSpinBox::setEnabled);
 }
 
 ConfigureGraphics::~ConfigureGraphics() = default;
@@ -48,6 +50,8 @@ void ConfigureGraphics::SetConfiguration() {
     ui->toggle_hw_shader->setChecked(Settings::values.use_hw_shader);
     ui->toggle_accurate_mul->setChecked(Settings::values.shaders_accurate_mul);
     ui->toggle_format_reinterpret_hack->setChecked(Settings::values.use_format_reinterpret_hack);
+    ui->enable_cache_clear->setChecked(Settings::values.enable_cache_clear);
+    ui->clear_cache_secs->setValue(Settings::values.clear_cache_secs);
     ui->toggle_shader_jit->setChecked(Settings::values.use_shader_jit);
     ui->toggle_vsync_new->setChecked(Settings::values.use_vsync_new);
 }
@@ -57,6 +61,8 @@ void ConfigureGraphics::ApplyConfiguration() {
     Settings::values.use_hw_shader = ui->toggle_hw_shader->isChecked();
     Settings::values.shaders_accurate_mul = ui->toggle_accurate_mul->isChecked();
     Settings::values.use_format_reinterpret_hack = ui->toggle_format_reinterpret_hack->isChecked();
+    Settings::values.enable_cache_clear = ui->enable_cache_clear->isChecked();
+    Settings::values.clear_cache_secs = ui->clear_cache_secs->value();
     Settings::values.use_shader_jit = ui->toggle_shader_jit->isChecked();
     Settings::values.use_vsync_new = ui->toggle_vsync_new->isChecked();
 }
