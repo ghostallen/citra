@@ -27,6 +27,7 @@ ConfigureGeneral::ConfigureGeneral(QWidget* parent)
     SetConfiguration();
 
     connect(ui->toggle_frame_limit, &QCheckBox::toggled, ui->frame_limit, &QSpinBox::setEnabled);
+    ui->toggle_use_priority_boost->setEnabled(!Core::System::GetInstance().IsPoweredOn());
 
     ui->updateBox->setVisible(UISettings::values.updater_found);
     connect(ui->button_reset_defaults, &QPushButton::clicked, this,
@@ -45,6 +46,7 @@ void ConfigureGeneral::SetConfiguration() {
     ui->frame_limit->setValue(Settings::values.frame_limit);
 
     ui->toggle_check_exit->setChecked(UISettings::values.confirm_before_closing);
+    ui->toggle_use_priority_boost->setChecked(UISettings::values.use_priority_boost);
     ui->toggle_background_pause->setChecked(UISettings::values.pause_when_in_background);
 
     ui->toggle_update_check->setChecked(UISettings::values.check_for_update_on_start);
@@ -88,6 +90,8 @@ void ConfigureGeneral::ApplyConfiguration() {
 
     Settings::values.use_frame_limit = ui->toggle_frame_limit->isChecked();
     Settings::values.frame_limit = ui->frame_limit->value();
+
+    Settings::values.use_priority_boost = ui->toggle_use_priority_boost->isChecked();
 
     Settings::values.cpu_clock_percentage = SliderToSettings(ui->slider_clock_speed->value());
 }
