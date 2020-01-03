@@ -46,7 +46,8 @@ void ConfigureGeneral::SetConfiguration() {
     ui->frame_limit->setValue(Settings::values.frame_limit);
 
     ui->toggle_check_exit->setChecked(UISettings::values.confirm_before_closing);
-    ui->toggle_use_priority_boost->setChecked(UISettings::values.use_priority_boost);
+    ui->toggle_use_priority_boost->setChecked(Settings::values.use_priority_boost);
+    ui->toggle_use_force_indexed->setChecked(Settings::values.use_force_indexed);
     ui->toggle_background_pause->setChecked(UISettings::values.pause_when_in_background);
 
     ui->toggle_update_check->setChecked(UISettings::values.check_for_update_on_start);
@@ -92,6 +93,8 @@ void ConfigureGeneral::ApplyConfiguration() {
     Settings::values.frame_limit = ui->frame_limit->value();
 
     Settings::values.use_priority_boost = ui->toggle_use_priority_boost->isChecked();
+
+    Settings::values.use_force_indexed = ui->toggle_use_force_indexed->isChecked();
 
     Settings::values.cpu_clock_percentage = SliderToSettings(ui->slider_clock_speed->value());
 }
