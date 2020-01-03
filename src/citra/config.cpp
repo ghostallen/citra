@@ -138,6 +138,8 @@ void Config::ReadValues() {
         sdl2_config->GetBoolean("Renderer", "enable_cache_clear", false);
     Settings::values.clear_cache_secs =
         static_cast<u16>(sdl2_config->GetInteger("Renderer", "clear_cache_secs", 30));
+    Settings::values.sharper_distant_objects =
+        sdl2_config->GetBoolean("Renderer", "sharper_distant_objects", false);
     Settings::values.use_vsync_new =
         static_cast<u16>(sdl2_config->GetInteger("Renderer", "use_vsync_new", 1));
 
