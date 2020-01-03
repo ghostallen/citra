@@ -84,6 +84,9 @@ void LogSettings() {
     LogSetting("Renderer_UseFrameLimit", Settings::values.use_frame_limit);
     LogSetting("Renderer_FrameLimit", Settings::values.frame_limit);
     LogSetting("Renderer_FormatReinterpretHack", Settings::values.use_format_reinterpret_hack);
+    LogSetting("use_custom_cpu_ticks", Settings::values.use_custom_cpu_ticks);
+    LogSetting("custom_cpu_ticks", Settings::values.custom_cpu_ticks);
+    LogSetting("cpu_clock_percentage", Settings::values.cpu_clock_percentage);
     LogSetting("Renderer_PostProcessingShader", Settings::values.pp_shader_name);
     LogSetting("Renderer_FilterMode", Settings::values.filter_mode);
     LogSetting("Stereoscopy_Render3d", static_cast<int>(Settings::values.render_3d));

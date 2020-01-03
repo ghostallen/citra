@@ -60,6 +60,9 @@ void ConfigureGeneral::SetConfiguration() {
     ui->frame_limit->setEnabled(ui->toggle_frame_limit->isChecked());
     ui->frame_limit->setValue(Settings::values.frame_limit);
 
+    ui->use_custom_cpu_ticks->setChecked(Settings::values.use_custom_cpu_ticks);
+    ui->custom_cpu_ticks->setEnabled(ui->use_custom_cpu_ticks->isChecked());
+    ui->custom_cpu_ticks->setValue(Settings::values.custom_cpu_ticks);
     ui->slider_clock_speed->setValue(SettingsToSlider(Settings::values.cpu_clock_percentage));
     ui->clock_display_label->setText(QString("%1%").arg(Settings::values.cpu_clock_percentage));
 }
@@ -96,6 +99,8 @@ void ConfigureGeneral::ApplyConfiguration() {
 
     Settings::values.use_force_indexed = ui->toggle_use_force_indexed->isChecked();
 
+    Settings::values.use_custom_cpu_ticks = ui->use_custom_cpu_ticks->isChecked();
+    Settings::values.custom_cpu_ticks = ui->custom_cpu_ticks->value();
     Settings::values.cpu_clock_percentage = SliderToSettings(ui->slider_clock_speed->value());
 }
 
